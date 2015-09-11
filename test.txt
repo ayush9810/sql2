@@ -1,0 +1,62 @@
+1)Create a table named "testing_table" with following fields:
+
+name (string)
+contact_name (string)
+roll_no (string)
+
+
+mysql>CREATE TABLE testing_table(name varchar(25) not null,contact_name varchar(25) not null,roll_no varchar(25) not null);
+
+mysql> DESCRIBE testing_table;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| name         | varchar(25) | NO   |     | NULL    |       |
+| contact_name | varchar(25) | NO   |     | NULL    |       |
+| roll_no      | varchar(25) | NO   |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+
+2)Delete column name
+mysql> ALTER TABLE testing_table DROP COLUMN name;
+mysql> DESCRIBE testing_table;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| contact_name | varchar(25) | NO   |     | NULL    |       |
+| roll_no      | varchar(25) | NO   |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+
+3)rename contact_name to username
+mysql> ALTER TABLE testing_table CHANGE contact_name username varchar(25) NOT NULL;
+mysql> DESCRIBE testing_table;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| username | varchar(25) | NO   |     | NULL    |       |
+| roll_no  | varchar(25) | NO   |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+
+4) Add two fields first_name, last_name
+mysql> ALTER TABLE testing_table ADD first_name varchar(25) NOT NULL;
+mysql> ALTER TABLE testing_table ADD last_name varchar(25) NOT NULL;
+mysql> DESCRIBE testing_table;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| username   | varchar(25) | NO   |     | NULL    |       |
+| roll_no    | varchar(25) | NO   |     | NULL    |       |
+| first_name | varchar(25) | NO   |     | NULL    |       |
+| last_name  | varchar(25) | NO   |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+
+5)change the type of roll_no to integer
+mysql> ALTER TABLE testing_table CHANGE roll_no roll_no int(11) NOT NULL;
+mysql> DESCRIBE testing_table;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| username   | varchar(25) | NO   |     | NULL    |       |
+| roll_no    | int(11)     | NO   |     | NULL    |       |
+| first_name | varchar(25) | NO   |     | NULL    |       |
+| last_name  | varchar(25) | NO   |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
